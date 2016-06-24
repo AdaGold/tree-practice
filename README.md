@@ -1,7 +1,7 @@
 # Tree Practice
 
 ## Creating a binary tree on paper
-On paper, create a binary search tree to represent the expressions below.
+On paper, create a binary expression tree to represent the expressions below.
 1. `3 + 2`
 2. `3 + 2 - 10`
 3. `4 * 3 + 2`
@@ -25,3 +25,7 @@ On paper, create a binary search tree to represent the expressions below.
 
 ## Code
 1. Code out solutions for problems 1-4 above. _Added Fun: #5 too._
+
+<hr>
+### Resources
+* https://en.wikipedia.org/wiki/Binary_expression_tree
