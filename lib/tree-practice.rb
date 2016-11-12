@@ -8,7 +8,7 @@ class TreeNode
    end
 end
 
-
+# Method to check whether tree is valid - checks for operands and operators in the appropriate locations.
 def is_valid_infix_tree?(node)
   if (node.left == nil && node.right == nil) # This node is a leaf and must be numerical
     begin
