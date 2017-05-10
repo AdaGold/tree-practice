@@ -14,18 +14,16 @@ On paper, create a binary expression tree to represent the expressions below.
 4. Create `4 * 3 + 2 - 10 % 5` in code as a binary tree.
 
 ## Pseudocode new tree methods
-1. Let's write a method that prints out all the operators that exist in the tree. _Added Fun: If there are duplicate operators, don't print them separately, but instead print a tally of all operators found._
-2. Write a method that returns the count of non-operators (in this case, leaves) in the tree. _Added Fun: print the level of the tree that each leaf appears on._
+1. Let's write a method that prints out all the operators that exist in the tree.
+    - _Added Fun: If there are duplicate operators, don't print them separately, but instead print a tally of all operators found._
+2. Write a method that returns the count of non-operators (in this case, leaves) in the tree.
+    - _Added Fun: print the level of the tree that each leaf appears on._
 3. Write methods to print the tree in prefix and postfix notations.
-4. Write a method that returns whether or not a given operator exists in the tree. _Added fun: If the operator occurs more than once, return the count on how many times it occurs - you may return 0 if it doesn't exist in the tree._
-5. _Added Fun: Evaluate an infix binary tree._
+4. Write a method that returns whether or not a given operator exists in the tree.
+    - _Added fun: If the operator occurs more than once, return the count on how many times it occurs - you may return 0 if it doesn't exist in the tree._
 
 ## TDD
-1. Come up with at least 3 test cases for problems 1-4 above. _Added Fun: #5 too._
+1. Come up with test cases for problems 1-4 above.
 
 ## Code
-1. Code out solutions for problems 1-4 above. _Added Fun: #5 too._
-
-<hr>
-### Resources
-* https://en.wikipedia.org/wiki/Binary_expression_tree
+1. Code out solutions for problems 1-4 above.
