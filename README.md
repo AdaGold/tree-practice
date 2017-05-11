@@ -1,6 +1,6 @@
 # Tree Practice
 
-## Creating a binary tree on paper
+## Binary Expression Trees
 On paper, create a binary expression tree to represent the expressions below.
 1. `3 + 2`
 2. `3 + 2 - 10`
@@ -22,8 +22,22 @@ On paper, create a binary expression tree to represent the expressions below.
 4. Write a method that returns whether or not a given operator exists in the tree.
     - _Added fun: If the operator occurs more than once, return the count on how many times it occurs - you may return 0 if it doesn't exist in the tree._
 
-## TDD
-1. Come up with test cases for problems 1-4 above.
-
 ## Code
 1. Code out solutions for problems 1-4 above.
+
+## Binary Search Trees
+On paper, create a binary search tree (without balancing) adding the following elements in the order provided
+1. `1, 4, 5, 2, 9`
+2. `40, -2, 7, 17, 58, 0`
+3. `0, -1, 1`
+
+Then create these trees in [`tree-practice.rb`](tree-practice.rb)
+
+## Pseudocode new tree methods
+1. Write a method to find the smallest element in a binary search tree.
+2. Write a method that returns whether or not a given value exists in the tree.
+3. Write a method that determines if a tree is [balanced](https://webdocs.cs.ualberta.ca/~holte/T26/balanced-trees.html) or not.
+
+## Code
+1. Code out solutions for problems 1 and 2 above
+    - _Added fun: Code the third problem too!_
