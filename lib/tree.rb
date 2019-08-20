@@ -120,19 +120,3 @@ class Tree
     return self.inorder
   end
 end
-
-tree = Tree.new
-
-tree.add(5)
-tree.add(3)
-tree.add(7)
-tree.add(4)
-tree.add(27)
-
-puts "#{tree.find(7)}"
-puts "#{tree.preorder}"
-puts "#{tree.postorder}"
-puts "BFS:  #{tree.bfs}"
-
-
-puts "#{tree.to_s}"
