@@ -50,6 +50,12 @@ class Tree
     raise NotImplementedError
   end
 
+  # Time Complexity: 
+  # Space Complexity: 
+  def height
+    raise NotImplementedError
+  end
+
   # Useful for printing
   def to_s
     return "#{self.inorder}"
