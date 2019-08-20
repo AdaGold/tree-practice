@@ -76,4 +76,29 @@ describe Tree do
       expect(tree.bfs).must_equal [5, 3, 7, 4, 27]
     end
   end
+
+  describe "height" do
+    it "will return 0 for an empty tree" do
+      expect(tree.height).must_equal 0
+    end
+
+    it "will return the height for a given tree" do
+      tree.add(5)
+      expect(tree.height).must_equal 1
+
+      tree.add(10)
+      expect(tree.height).must_equal 2
+
+      tree.add(20)
+      expect(tree.height).must_equal 3
+
+      tree.add(2)
+      expect(tree.height).must_equal 3
+
+      tree.add(3)
+      expect(tree.height).must_equal 3
+
+      tree.add(4)
+      expect(tree.height).must_equal 4
+    end
 end
