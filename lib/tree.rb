@@ -27,10 +27,10 @@ class TreeNode
     if val == @value
       return true
     elsif val <= @value
-      return nil if @left.nil
+      return false if @left.nil?
       return @left.find(val)
     else
-      return nil if @right.nil?
+      return false if @right.nil?
       return @right.find(val)
     end
    end
@@ -52,6 +52,25 @@ class TreeNode
     right.postorder(array) unless right.nil?
     array << @value
   end
+
+  def bfs(list)
+    queue = [self]
+
+    return bfs_helper(queue, list)
+  end
+
+  private 
+
+    def bfs_helper(queue, list)
+      return list if queue.size == 0
+      first_item = queue.shift
+      list << first_item.value
+      queue << first_item.left unless first_item.left.nil?
+      queue << first_item.right unless first_item.right.nil?
+
+      return bfs_helper(queue, list)
+
+    end
 end
 
 class Tree
@@ -69,7 +88,7 @@ class Tree
   end
 
   def find(val)
-    return nil if @root.nil?
+    return false if @root.nil?
     return @root.find(val)
   end
 
@@ -90,6 +109,13 @@ class Tree
     @root.postorder(list) unless @root.nil?
     return list
   end
+
+  def bfs
+    list = []
+    return @root.bfs(list) unless @root.nil?
+    return list
+  end
+
   def to_s
     return self.inorder
   end
@@ -100,10 +126,13 @@ tree = Tree.new
 tree.add(5)
 tree.add(3)
 tree.add(7)
+tree.add(4)
+tree.add(27)
 
 puts "#{tree.find(7)}"
 puts "#{tree.preorder}"
 puts "#{tree.postorder}"
+puts "BFS:  #{tree.bfs}"
 
 
 puts "#{tree.to_s}"
