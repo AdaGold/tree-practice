@@ -116,7 +116,8 @@ class Tree
     return list
   end
 
+  # Useful for printing
   def to_s
-    return self.inorder
+    return "#{self.inorder}"
   end
 end
