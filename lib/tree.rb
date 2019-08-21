@@ -1,10 +1,12 @@
 class TreeNode
-   attr_accessor :value, :left, :right
+  attr_reader :key, :value
+  attr_accessor :left, :right
 
-   def initialize(val)
-     @value = val
-     @left = nil
-     @right = nil
+   def initialize(key, val)
+    @key = key
+    @value = val
+    @left = nil
+    @right = nil
    end
 end
 
@@ -16,13 +18,13 @@ class Tree
 
   # Time Complexity: 
   # Space Complexity: 
-  def add(value)
+  def add(key, value)
     raise NotImplementedError
   end
 
   # Time Complexity: 
   # Space Complexity: 
-  def find(val)
+  def find(key)
     raise NotImplementedError
   end
 
