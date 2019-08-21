@@ -6,14 +6,15 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 describe Tree do
   let (:tree) {Tree.new}
 
-  def add_nodes(tree)
+  let (:tree_with_nodes) {
     tree.add(5, "Peter")
     tree.add(3, "Paul")
     tree.add(1, "Mary")
     tree.add(10, "Karla")
     tree.add(15, "Ada")
     tree.add(25, "Kari")
-  end
+    tree
+  }
 
   it "add & find values" do
     tree.add(5, "Peter")
@@ -36,9 +37,8 @@ describe Tree do
     end
 
     it "will return the tree in order" do
-      add_nodes(tree)
 
-      expect(tree.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
+      expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
                                        {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
@@ -51,9 +51,7 @@ describe Tree do
     end
 
     it "will return the tree in preorder" do
-      add_nodes(tree)
-
-      expect(tree.preorder).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
+      expect(tree_with_nodes.preorder).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
                                         {:key=>1, :value=>"Mary"}, {:key=>10, :value=>"Karla"}, 
                                         {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
@@ -65,9 +63,7 @@ describe Tree do
     end
 
     it "will return the tree in postorder" do
-      add_nodes(tree)
-
-      expect(tree.postorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
+      expect(tree_with_nodes.postorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
                                          {:key=>25, :value=>"Kari"}, {:key=>15, :value=>"Ada"}, 
                                          {:key=>10, :value=>"Karla"}, {:key=>5, :value=>"Peter"}]
     end
@@ -79,8 +75,7 @@ describe Tree do
     end
 
     it "will return an array of a level-by-level output of the tree" do
-      add_nodes(tree)
-      expect(tree.bfs).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
+      expect(tree_with_nodes.bfs).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
                                    {:key=>10, :value=>"Karla"}, {:key=>1, :value=>"Mary"}, 
                                    {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
