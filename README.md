@@ -7,10 +7,9 @@ In this exercise you will implement, in Ruby, several Tree methods.
 - `inorder` - This method returns an array of all the elements in the tree, in order.
 - `postorder` - This method returns an array of all the elements in a postorder fashion (left, right , root).
 - `preorder` - This method returns an array of all the elements in a preorder fashion (root, left, right).
-- `bfs` - This method returns an array with the tree elements in a level-by-level order (Breadth-First traversal)
 - `height` - This method returns the height of the binary search tree.
 
 ## Optionals
 
 - `delete(value)` - This method removes a node from the tree.  Also add tests for the method.  
-
+- `bfs` - This method returns an array with the tree elements in a level-by-level order (Breadth-First traversal)

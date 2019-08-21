@@ -46,13 +46,14 @@ class Tree
 
   # Time Complexity: 
   # Space Complexity: 
-  def bfs
+  def height
     raise NotImplementedError
   end
 
+  # Optional Method
   # Time Complexity: 
   # Space Complexity: 
-  def height
+  def bfs
     raise NotImplementedError
   end
 
