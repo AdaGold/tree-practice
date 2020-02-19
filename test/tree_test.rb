@@ -1,4 +1,5 @@
-require_relative 'test_helper'
+
+require_relative "test_helper"
 
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
@@ -16,19 +17,21 @@ describe Tree do
     tree
   }
 
-  it "add & find values" do
-    tree.add(5, "Peter")
-    expect(tree.find(5)).must_equal "Peter"
+  describe "add and find" do 
+    it "add & find values" do
+      tree.add(5, "Peter")
+      expect(tree.find(5)).must_equal "Peter"
 
-    tree.add(15, "Ada")
-    expect(tree.find(15)).must_equal "Ada"
+      tree.add(15, "Ada")
+      expect(tree.find(15)).must_equal "Ada"
 
-    tree.add(3, "Paul")
-    expect(tree.find(3)).must_equal "Paul"
-  end
+      tree.add(3, "Paul")
+      expect(tree.find(3)).must_equal "Paul"
+    end
 
-  it "can't find anything when the tree is empty" do
-    expect(tree.find(50)).must_be_nil
+    it "can't find anything when the tree is empty" do
+      expect(tree.find(50)).must_be_nil
+    end
   end
 
   describe "inorder" do
@@ -81,7 +84,7 @@ describe Tree do
     end
   end
   
-  describe "hieght" do 
+  describe "height" do 
     it "will return 0 if tree is empty" do 
       expect(tree.height()).must_equal 0
     end
@@ -99,4 +102,58 @@ describe Tree do
       expect(tree_with_nodes.height).must_equal 5
     end
   end
+
+  describe "delete" do
+    it "can delete a note in the tree" do
+      # Arrange & Assert
+      expect(tree_with_nodes.find(15)).must_equal "Ada"
+
+      # Act
+      value = tree_with_nodes.delete(15)
+
+      # Assert
+      expect(value).must.equal "Ada"
+      expect(tree_with_nodes.find(15)).must_be_nil
+    end
+
+    it "will return nil if the node is not in the tree" do
+      # Arrange & Act
+      value = tree_with_nodes(47)
+
+      # Assert
+      expect(value).must_be_nil
+    end
+
+  end
+
+  describe "bfs" do
+    it "will return an empty array for an empty tree" do
+      # Arrange & Act
+      answer = tree.bfs
+
+      # Assert
+      expect(answer.class).must_equal Array
+      expect(answer).must_equal []
+    end
+
+    it "will return an array with a level-by-level right to left list of nodes" do
+      # Arrange & Act
+      answer = tree_with_nodes.bfs
+
+
+      tree.add(5, "Peter")
+      tree.add(3, "Paul")
+      tree.add(1, "Mary")
+      tree.add(10, "Karla")
+      tree.add(15, "Ada")
+      tree.add(25, "Kari")
+      # Assert
+      expect(answer.length).must_equal 6
+
+      ["Peter", "Paul", "Karla", "Mary", "Ada", "Kari"].each_with_index do |value, i|
+        expect(answer[i]).must_equal value
+      end
+    end
+  end
+
 end
