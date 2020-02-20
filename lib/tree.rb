@@ -177,7 +177,7 @@ class Tree
       if current_node.key > key
         current_node.left = add_helper(current_node.left, key, value)
       else
-        current_node.right = add_helper(current_node.right, key, value)
+        current_node.right = git push add_helper(current_node.right, key, value)
       end
     end
     return current_node
