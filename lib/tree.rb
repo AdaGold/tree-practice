@@ -9,22 +9,6 @@ class TreeNode
     @right = nil
    end
 
-   def add(key, value)
-      if self.key > key
-        if self.left.nil?
-          self.left = TreeNode.new(key, value)
-        else
-          self.left.add(key, value)
-        end
-      else
-        if self.right.nil?
-          self.right = TreeNode.new(key, value)
-        else
-          self.right.add(key, value)
-        end
-      end
-   end
-
    def inorder(list)
     list = left.inorder(list) unless left.nil?
     list << {value: value, key: key}
