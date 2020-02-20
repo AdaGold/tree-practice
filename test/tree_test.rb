@@ -1,8 +1,4 @@
-
 require_relative "test_helper"
-
-
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe Tree do
   let (:tree) {Tree.new}
@@ -40,7 +36,6 @@ describe Tree do
     end
 
     it "will return the tree in order" do
-
       expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
                                        {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
@@ -109,51 +104,19 @@ describe Tree do
       expect(tree_with_nodes.find(15)).must_equal "Ada"
 
       # Act
-      value = tree_with_nodes.delete(15)
+      tree_with_nodes.delete(15)
 
       # Assert
-      expect(value).must.equal "Ada"
       expect(tree_with_nodes.find(15)).must_be_nil
     end
 
-    it "will return nil if the node is not in the tree" do
+    it "will return nil if the node is not in the tree when it's deleted" do
       # Arrange & Act
-      value = tree_with_nodes(47)
+      answer = tree_with_nodes.delete(47)
 
       # Assert
-      expect(value).must_be_nil
-    end
-
-  end
-
-  describe "bfs" do
-    it "will return an empty array for an empty tree" do
-      # Arrange & Act
-      answer = tree.bfs
-
-      # Assert
-      expect(answer.class).must_equal Array
-      expect(answer).must_equal []
-    end
-
-    it "will return an array with a level-by-level right to left list of nodes" do
-      # Arrange & Act
-      answer = tree_with_nodes.bfs
-
-
-      tree.add(5, "Peter")
-      tree.add(3, "Paul")
-      tree.add(1, "Mary")
-      tree.add(10, "Karla")
-      tree.add(15, "Ada")
-      tree.add(25, "Kari")
-      # Assert
-      expect(answer.length).must_equal 6
-
-      ["Peter", "Paul", "Karla", "Mary", "Ada", "Kari"].each_with_index do |value, i|
-        expect(answer[i]).must_equal value
-      end
+      expect(answer).must_be_nil
+      expect(tree_with_nodes.find(47)).must_be_nil
     end
   end
-
 end
