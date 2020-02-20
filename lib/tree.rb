@@ -43,7 +43,7 @@ class Tree
     if @root.nil?
       @root = TreeNode.new(key, value)
     else
-      @root.add(key, value)
+      add_helper(@root, key, value)
     end
   end
 
@@ -168,6 +168,19 @@ class Tree
   def find_largest_child(current_node)
     return current_node if current_node.right.nil?
     return find_largest_child(current_node.right)
+  end
+
+  def add_helper(current_node, key, value)
+    if current_node.nil?
+      return TreeNode.new(key, value)
+    else
+      if current_node.key > key
+        current_node.left = add_helper(current_node.left, key, value)
+      else
+        current_node.right = add_helper(current_node.right, key, value)
+      end
+    end
+    return current_node
   end
 end
  
