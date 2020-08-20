@@ -1,6 +1,5 @@
 require_relative 'test_helper'
 
-
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe Tree do
@@ -14,6 +13,18 @@ describe Tree do
     tree.add(15, "Ada")
     tree.add(25, "Kari")
     tree
+  }
+
+  let (:balanced_tree) {
+    balanced = Tree.new
+    balanced.add(5, "Peter")
+    balanced.add(3, "Paul")
+    balanced.add(4, "Kate")
+    balanced.add(1, "Mary")
+    balanced.add(10, "Karla")
+    balanced.add(8, "Ada")
+    balanced.add(25, "Kari")
+    balanced
   }
 
   it "add & find values" do
@@ -37,7 +48,6 @@ describe Tree do
     end
 
     it "will return the tree in order" do
-
       expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
                                        {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
@@ -91,22 +101,22 @@ describe Tree do
     it "will return 1 for a tree of height 1" do
       my_tree = Tree.new
 
-      my_tree.add(100)
+      my_tree.add(100, "Simon")
       expect(my_tree.height).must_equal 1
     end
 
     it "will report the height for a balanced tree" do
-      expect(tree_with_nodes.height).must_equal 3
+      expect(balanced_tree.height).must_equal 3
     end
 
     it "will report the height for unbalanced trees" do
       my_tree = Tree.new
 
-      my_tree.add(100)
-      my_tree.add(110)
-      my_tree.add(120)
-      my_tree.add(130)
-      my_tree.add(140)
+      my_tree.add(100, "Calvin")
+      my_tree.add(110, "Simon")
+      my_tree.add(120, "Devin")
+      my_tree.add(130, "Janice")
+      my_tree.add(140, "Lauren")
 
       expect(my_tree.height).must_equal 5
 
@@ -114,11 +124,11 @@ describe Tree do
 
       my_tree = Tree.new
 
-      my_tree.add(100)
-      my_tree.add(90)
-      my_tree.add(80)
-      my_tree.add(70)
-      my_tree.add(60)
+      my_tree.add(100, "Paula")
+      my_tree.add(90, "Ann")
+      my_tree.add(80, "Grace")
+      my_tree.add(70, "Hopi")
+      my_tree.add(60, "Pykasu")
 
       expect(my_tree.height).must_equal 5
     end
