@@ -85,7 +85,7 @@ describe Tree do
     it "will return 0 for an empty tree" do
       my_tree = Tree.new
 
-      expect(tree.height).must_equal 0
+      expect(my_tree.height).must_equal 0
     end
 
     it "will return 1 for a tree of height 1" do
