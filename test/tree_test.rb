@@ -1,7 +1,5 @@
 require_relative 'test_helper'
 
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-
 describe Tree do
   let (:tree) {Tree.new}
 
@@ -79,7 +77,7 @@ describe Tree do
     end
   end
 
-  describe "breadth first search" do
+  xdescribe "breadth first search" do
     it "will give an empty array for an empty tree" do
       expect(tree.bfs).must_equal []
     end
