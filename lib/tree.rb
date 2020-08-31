@@ -130,4 +130,6 @@ class Tree
     
     return [r, l].max + 1
   end
+
+  # did not decide to do optionals
 end
