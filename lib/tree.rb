@@ -1,6 +1,3 @@
-
-
-
 class TreeNode
   attr_reader :key, :value
   attr_accessor :left, :right
@@ -38,18 +35,12 @@ class Tree
     return current_node
   end 
   
-
-
-
   # Time Complexity: O(log(n) best case, O(n) worst case
   # Space Complexity: O(1)
-
-  
   def find(key)
     return find_helper(@root, key)
   end
   
-
   def find_helper(current_node, key)
     if current_node.nil?
       return nil 
@@ -66,7 +57,6 @@ class Tree
 
   # Time Complexity: O(n)
   # Space Complexity:  O(n)
-
   def inorder
     arr = []
     if @root.nil?
@@ -130,7 +120,6 @@ class Tree
   
   # Time Complexity: O(n)
   # Space Complexity: O(n) - stack
-  
   def height(current_node = @root)
     if current_node.nil?
       return 0
@@ -141,5 +130,4 @@ class Tree
     
     return [r, l].max + 1
   end
-  
 end
