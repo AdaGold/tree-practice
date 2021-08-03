@@ -1,129 +1,180 @@
 import pytest
 from binary_search_tree.tree import Tree
 
-# require_relative 'test_helper'
+
+@pytest.fixture()
+def empty_tree() -> Tree():
+    return Tree()
+
+@pytest.fixture()
+def tree_with_nodes(empty_tree) -> Tree():
+    empty_tree.add(5, "Peter")
+    empty_tree.add(3, "Paul")
+    empty_tree.add(1, "Mary")
+    empty_tree.add(10, "Karla")
+    empty_tree.add(15, "Ada")
+    empty_tree.add(25, "Kari")
+
+    return empty_tree
+
+def test_add_and_find(tree_with_nodes):
+    assert tree_with_nodes.find(5) == "Peter"
+    assert tree_with_nodes.find(15) == "Ada"
+    assert tree_with_nodes.find(3) == "Paul"
+
+def test_find_returns_none_for_empty_tree(empty_tree):
+    assert empty_tree.find(5) == None
+
+def test_find_returns_none_for_values_not_in_tree(tree_with_nodes):
+    assert tree_with_nodes.find(6) == None
 
 
-# Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+def test_inorder_with_empty_tree(empty_tree):
+    answer = empty_tree.inorder()
+    assert empty_tree.inorder() == []
 
-# describe Tree do
-#   let (:tree) {Tree.new}
+def test_inorder_with_nodes(tree_with_nodes):
+    expected_answer = [
+        {
+            "key": 1, 
+            "value": "Mary"
+        }, 
+        {
+            "key": 3, 
+            "value": "Paul"
+        }, 
+        {
+            "key": 5, 
+            "value": "Peter"
+        }, 
+        {
+            "key": 10, 
+            "value": "Karla"
+        }, 
+        {
+            "key": 15, 
+            "value": "Ada"
+        }, 
+        {
+            "key": 25, 
+            "value": "Kari"
+        }
+    ]
 
-#   let (:tree_with_nodes) {
-#     tree.add(5, "Peter")
-#     tree.add(3, "Paul")
-#     tree.add(1, "Mary")
-#     tree.add(10, "Karla")
-#     tree.add(15, "Ada")
-#     tree.add(25, "Kari")
-#     tree
-#   }
+    answer = tree_with_nodes.inorder()
+    assert answer == expected_answer
 
-#   it "add & find values" do
-#     tree.add(5, "Peter")
-#     expect(tree.find(5)).must_equal "Peter"
+def test_preorder_on_empty_tree(empty_tree):
+    assert empty_tree.preorder() == []
 
-#     tree.add(15, "Ada")
-#     expect(tree.find(15)).must_equal "Ada"
+def test_preorder_on_tree_with_nodes(tree_with_nodes):
+    expected_answer = [
+        {
+            "key": 5, 
+            "value": "Peter"
+        }, 
+        {
+            "key": 3, 
+            "value": "Paul"
+        },
+        {
+            "key": 1,
+            "value": "Mary"
+        }, 
+        {
+            "key": 10,
+            "value": "Karla"
+        }, 
+        {
+            "key": 15,
+            "value": "Ada"
+        }, 
+        {
+            "key": 25,
+            "value": "Kari"
+        }
+    ]
 
-#     tree.add(3, "Paul")
-#     expect(tree.find(3)).must_equal "Paul"
-#   end
+    answer = tree_with_nodes.preorder()
+    assert answer == expected_answer
 
-#   it "can't find anything when the tree is empty" do
-#     expect(tree.find(50)).must_be_nil
-#   end
+def test_postorder_on_empty_tree(empty_tree):
+    assert empty_tree.postorder() == []
 
-#   describe "inorder" do
-#     it "will give an empty array for an empty tree" do
-#       expect(tree.inorder).must_equal []
-#     end
+def test_postorder_on_tree_with_nodes(tree_with_nodes):
+    expected_answer = [
+        {
+            "key": 1, 
+            "value": "Mary"
+        }, 
+        {
+            "key": 3,
+            "value": "Paul"
+        },
+        {
+            "key": 25, 
+            "value": "Kari"
+        }, 
+        {
+            "key": 15,
+            "value": "Ada"
+        }, 
+        {
+            "key": 10,
+            "value": "Karla"
+        },
+        {
+            "key": 5,
+            "value": "Peter"
+        }
+    ]
 
-#     it "will return the tree in order" do
+    answer = tree_with_nodes.postorder()
+    assert answer == expected_answer
 
-#       expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
-#                                        {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
-#                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
-#     end
-#   end
+def test_height_of_empty_tree_is_zero(empty_tree):
+    assert empty_tree.height() == 0
 
+def test_height_of_one_node_tree(empty_tree):
+    empty_tree.add(5, "pasta")
+    assert empty_tree.height() == 1
 
-#   describe "preorder" do
-#     it "will give an empty array for an empty tree" do
-#       expect(tree.preorder).must_equal []
-#     end
+def test_height_of_many_node_tree(tree_with_nodes):
+    assert tree_with_nodes.height() == 4
+    tree_with_nodes.add(2, "pasta")
+    tree_with_nodes.add(2.5, "bread")
+    assert tree_with_nodes.height() == 5
+    
+def test_bfs_with_empty_tree(empty_tree):
+    assert empty_tree.bfs() == []
 
-#     it "will return the tree in preorder" do
-#       expect(tree_with_nodes.preorder).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
-#                                         {:key=>1, :value=>"Mary"}, {:key=>10, :value=>"Karla"}, 
-#                                         {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
-#     end
-#   end
+def test_bfs_with_tree_with_nodes(tree_with_nodes):
+    expected_answer = [
+        {
+            "key": 5, 
+            "value": "Peter"
+        }, 
+        {
+            "key": 3, 
+            "value": "Paul"
+        }, 
+        {
+            "key": 10, 
+            "value": "Karla"
+        }, 
+        {
+            "key": 1, 
+            "value": "Mary"
+        }, 
+        {
+            "key": 15,
+            "value": "Ada"
+        }, 
+        {
+            "key": 25,
+            "value": "Kari"
+        }
+    ]
 
-#   describe "postorder" do
-#     it "will give an empty array for an empty tree" do
-#       expect(tree.postorder).must_equal []
-#     end
-
-#     it "will return the tree in postorder" do
-#       expect(tree_with_nodes.postorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
-#                                          {:key=>25, :value=>"Kari"}, {:key=>15, :value=>"Ada"}, 
-#                                          {:key=>10, :value=>"Karla"}, {:key=>5, :value=>"Peter"}]
-#     end
-#   end
-
-#   describe "breadth first search" do
-#     it "will give an empty array for an empty tree" do
-#       expect(tree.bfs).must_equal []
-#     end
-
-#     it "will return an array of a level-by-level output of the tree" do
-#       expect(tree_with_nodes.bfs).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
-#                                    {:key=>10, :value=>"Karla"}, {:key=>1, :value=>"Mary"}, 
-#                                    {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
-#     end
-#   end
-
-#   describe "height" do
-#     it "will return 0 for an empty tree" do
-#       my_tree = Tree.new
-
-#       expect(my_tree.height).must_equal 0
-#     end
-
-#     it "will return 1 for a tree of height 1" do
-#       my_tree = Tree.new
-
-#       my_tree.add(100)
-#       expect(my_tree.height).must_equal 1
-#     end
-
-#     it "will report the height for a tree with height 4 on right and 3 on left" do
-#       expect(tree_with_nodes.height).must_equal 4
-#     end
-
-#     it "will report the height for unbalanced trees" do
-#       my_tree = Tree.new
-
-#       my_tree.add(100)
-#       my_tree.add(110)
-#       my_tree.add(120)
-#       my_tree.add(130)
-#       my_tree.add(140)
-
-#       expect(my_tree.height).must_equal 5
-
-#       my_tree = Tree.new
-
-#       my_tree = Tree.new
-
-#       my_tree.add(100)
-#       my_tree.add(90)
-#       my_tree.add(80)
-#       my_tree.add(70)
-#       my_tree.add(60)
-
-#       expect(my_tree.height).must_equal 5
-#     end
-#   end
-# end
+    answer = tree_with_nodes.bfs()
+    assert answer == expected_answer
