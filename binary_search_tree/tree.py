@@ -24,15 +24,23 @@ class Tree:
     def find(self, key):
         pass
 
+    # Time Complexity: 
+    # Space Complexity: 
     def inorder(self):
         pass
 
+    # Time Complexity: 
+    # Space Complexity: 
     def preorder(self):
         pass
 
+    # Time Complexity: 
+    # Space Complexity: 
     def postorder(self):
         pass
 
+    # Time Complexity: 
+    # Space Complexity: 
     def height(self):
         pass
 
