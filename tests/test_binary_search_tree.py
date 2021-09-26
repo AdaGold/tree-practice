@@ -18,6 +18,7 @@ def tree_with_nodes(empty_tree) -> Tree():
     return empty_tree
 
 def test_add_and_find(tree_with_nodes):
+    print(tree_with_nodes.find(5))
     assert tree_with_nodes.find(5) == "Peter"
     assert tree_with_nodes.find(15) == "Ada"
     assert tree_with_nodes.find(3) == "Paul"
