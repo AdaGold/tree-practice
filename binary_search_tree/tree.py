@@ -37,19 +37,17 @@ class Tree:
     # Time Complexity: 0 (log n)
     # Space Complexity: 
     def find(self, key):
-        if not self.root:
-            return None
         return self.find_helper(self.root, key)
 
     def find_helper(self, current, key):
+        if not current:
+            return None
         if current.key == key:
             return current.value
         if current.key > key:
             return self.find_helper(current.left, key)
         elif current.key < key:
             return self.find_helper(current.right, key)
-        else:
-            return None
 
     def iterative_find(self, key):
         if self.root == None:
@@ -63,8 +61,6 @@ class Tree:
                 current = current.right
             else:
                 current = current.left            
-
-
 
     # Time Complexity: 
     # Space Complexity: 
@@ -80,9 +76,6 @@ class Tree:
         list.append(current.dict())
         self.inorder_helper(current.right, list)
         return        
-
-
-
 
     # Time Complexity: 
     # Space Complexity:     
@@ -117,7 +110,14 @@ class Tree:
     # Time Complexity: 
     # Space Complexity:     
     def height(self):
-        pass
+        return self.height_helper(self.root)
+        
+    def height_helper(self, current): 
+        if not current:
+            return 0  
+        height_left = self.height_helper(current.left)
+        height_right = self.height_helper(current.right)
+        return max(height_left, height_right) + 1 
 
 
 #   # Optional Method
