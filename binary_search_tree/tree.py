@@ -34,8 +34,8 @@ class Tree:
 
         return current
 
-    # Time Complexity: 0 (log n)
-    # Space Complexity: 
+    # Time Complexity: 0(log n)
+    # Space Complexity: 0(log n)
     def find(self, key):
         return self.find_helper(self.root, key)
 
@@ -62,8 +62,8 @@ class Tree:
             else:
                 current = current.left            
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: 0(n)
+    # Space Complexity: 0(n)
     def inorder(self):
         list = []
         self.inorder_helper(self.root, list)
@@ -77,8 +77,8 @@ class Tree:
         self.inorder_helper(current.right, list)
         return        
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(n)
+    # Space Complexity: 0(n)    
     def preorder(self):
         list = []
         self.preorder_helper(self.root, list)
@@ -92,8 +92,8 @@ class Tree:
         self.preorder_helper(current.left, list)
         self.preorder_helper(current.right, list)        
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(n)
+    # Space Complexity: 0(n)    
     def postorder(self):
         list = []
         self.postorder_helper(self.root, list)
@@ -107,8 +107,8 @@ class Tree:
         list.append(current.dict())
         return  
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(n)
+    # Space Complexity: 0(n)     
     def height(self):
         return self.height_helper(self.root)
         
