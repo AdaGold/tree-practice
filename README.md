@@ -12,4 +12,4 @@ In this exercise you will implement, in Ruby, several Tree methods.
 
 ## Optionals
 
-- `bfs` - This method returns an array with the tree elements in a level-by-level order (see [Breadth-First traversal](https://www.cs.bu.edu/teaching/c/tree/breadth-first/))
+- `bfs` - This method returns an array with the tree elements in a level-by-level order (see [Breadth-First traversal](https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9))
