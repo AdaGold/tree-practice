@@ -17,17 +17,28 @@ def tree_with_nodes(empty_tree) -> Tree():
 
     return empty_tree
 
+
+def test_find_returns_none_for_empty_tree(empty_tree):
+    assert empty_tree.find(5) == None
+
+def test_can_find_single_root_node(empty_tree):
+    empty_tree.add(25, "Kari")
+    assert empty_tree.find(25) == "Kari"
+
 def test_add_and_find(tree_with_nodes):
     assert tree_with_nodes.find(5) == "Peter"
     assert tree_with_nodes.find(15) == "Ada"
     assert tree_with_nodes.find(3) == "Paul"
 
-def test_find_returns_none_for_empty_tree(empty_tree):
-    assert empty_tree.find(5) == None
+def test_can_find_leaf_nodes(tree_with_nodes):
+    assert tree_with_nodes.find(1) == "Mary"
+    assert tree_with_nodes.find(25) == "Kari"
+    tree_with_nodes.add(13, "Alicia")
+    assert tree_with_nodes.find(13) == "Alicia"
+
 
 def test_find_returns_none_for_values_not_in_tree(tree_with_nodes):
     assert tree_with_nodes.find(6) == None
-
 
 def test_inorder_with_empty_tree(empty_tree):
     answer = empty_tree.inorder()
@@ -178,4 +189,3 @@ def test_bfs_with_tree_with_nodes(tree_with_nodes):
 
     answer = tree_with_nodes.bfs()
     assert answer == expected_answer
-
