@@ -203,37 +203,37 @@ def test_will_report_height_of_unbalanced_tree():
     assert unbalanced_tree.height() == 5
 
 
-def test_bfs_with_empty_tree(empty_tree):
-    assert empty_tree.bfs() == []
+# def test_bfs_with_empty_tree(empty_tree):
+#     assert empty_tree.bfs() == []
 
 
-def test_bfs_with_tree_with_nodes(tree_with_nodes):
-    expected_answer = [
-        {
-            "key": 5,
-            "value": "Peter"
-        },
-        {
-            "key": 3,
-            "value": "Paul"
-        },
-        {
-            "key": 10,
-            "value": "Karla"
-        },
-        {
-            "key": 1,
-            "value": "Mary"
-        },
-        {
-            "key": 15,
-            "value": "Ada"
-        },
-        {
-            "key": 25,
-            "value": "Kari"
-        }
-    ]
+# def test_bfs_with_tree_with_nodes(tree_with_nodes):
+#     expected_answer = [
+#         {
+#             "key": 5,
+#             "value": "Peter"
+#         },
+#         {
+#             "key": 3,
+#             "value": "Paul"
+#         },
+#         {
+#             "key": 10,
+#             "value": "Karla"
+#         },
+#         {
+#             "key": 1,
+#             "value": "Mary"
+#         },
+#         {
+#             "key": 15,
+#             "value": "Ada"
+#         },
+#         {
+#             "key": 25,
+#             "value": "Kari"
+#         }
+#     ]
 
-    answer = tree_with_nodes.bfs()
-    assert answer == expected_answer
+#     answer = tree_with_nodes.bfs()
+#     assert answer == expected_answer
